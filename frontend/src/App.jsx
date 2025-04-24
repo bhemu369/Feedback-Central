@@ -3,12 +3,10 @@ import Header from "./components/Header";
 import FeedbackForm from "./components/FeedbackForm";
 import FeedbackList from "./components/FeedbackList";
 import Footer from "./components/Footer";
-import "./App.css";
 
 function App() {
   const [showFeedback, setShowFeedback] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check user preference or system preference
     const savedMode = localStorage.getItem("darkMode");
     return (
       savedMode === "true" ||
@@ -39,7 +37,6 @@ function App() {
 
   const handleFeedbackSubmit = (newFeedback) => {
     setLatestFeedback(newFeedback);
-    // Auto-show the feedback list after submission
     setShowFeedback(true);
   };
 

@@ -2,15 +2,13 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 import feedbackRoutes from './routes/feedback.js';
 
 // Configuration
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 4000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/feedback-app';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://adarsh3699:adarsh123@cluster0.6gfam.mongodb.net/feedback-app';
 
 // Middleware
 app.use(cors());
