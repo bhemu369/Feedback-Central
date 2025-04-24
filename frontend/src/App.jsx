@@ -52,11 +52,10 @@ function App() {
           <FeedbackForm onSubmitSuccess={handleFeedbackSubmit} />
         </div>
 
-        {/* Toggle Button */}
-        <div className="text-center my-6">
+        <div className="text-center my-8">
           <button
             onClick={toggleFeedbackView}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-md shadow-md transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5"
             aria-expanded={showFeedback}
           >
             {showFeedback ? "Hide Feedback" : "View Submitted Feedback"}
@@ -65,7 +64,7 @@ function App() {
 
         {/* Feedback List */}
         {showFeedback && (
-          <div className="mb-6">
+          <div className="mb-6 animate-fadeIn">
             <FeedbackList key={latestFeedback?._id} />
           </div>
         )}

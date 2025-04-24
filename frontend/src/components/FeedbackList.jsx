@@ -75,7 +75,7 @@ const FeedbackList = () => {
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div className="mb-2">
-              <h3 className="font-medium">{feedback.name}</h3>
+              <h2 className="text-gray-800">{feedback.name}</h2>
               <p className="text-sm text-gray-500">{feedback.email}</p>
               <span className="text-xs text-gray-500">
                 {formatDate(feedback.createdAt)}

@@ -91,29 +91,42 @@ const FeedbackForm = ({ onSubmitSuccess }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 p-4 max-w-md mx-auto border border-gray-300">
-      <div className="mb-4">
-        <h2 className="text-xl font-bold text-center">Leave Your Feedback</h2>
-        <p className="text-center">
+    <div className="bg-white dark:bg-gray-800 p-8 max-w-md mx-auto rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 transform transition-all duration-300 hover:shadow-xl">
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white">
+          Leave Your Feedback
+        </h2>
+        <p className="text-center text-gray-600 dark:text-gray-300 mt-2">
           We value your opinion. Share your thoughts with us!
         </p>
       </div>
 
       {submitStatus === "success" && (
-        <div className="bg-green-100 text-green-700 p-2 mb-4" role="alert">
-          <p>Thank you for your feedback!</p>
+        <div
+          className="bg-green-100 text-green-700 p-4 mb-6 rounded-md border-l-4 border-green-500 animate-fadeIn"
+          role="alert"
+        >
+          <p className="font-medium">Thank you for your feedback!</p>
         </div>
       )}
 
       {submitStatus === "error" && (
-        <div className="bg-red-100 text-red-700 p-2 mb-4" role="alert">
-          <p>{errors.server || "An error occurred. Please try again."}</p>
+        <div
+          className="bg-red-100 text-red-700 p-4 mb-6 rounded-md border-l-4 border-red-500 animate-fadeIn"
+          role="alert"
+        >
+          <p className="font-medium">
+            {errors.server || "An error occurred. Please try again."}
+          </p>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="name" className="block mb-1">
+          <label
+            htmlFor="name"
+            className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
             Full Name
           </label>
           <input
@@ -122,16 +135,21 @@ const FeedbackForm = ({ onSubmitSuccess }) => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
             placeholder="Enter your full name"
           />
           {errors.name && (
-            <p className="text-red-600 text-sm mt-1">{errors.name}</p>
+            <p className="text-red-600 text-sm mt-1 font-medium">
+              {errors.name}
+            </p>
           )}
         </div>
 
         <div>
-          <label htmlFor="email" className="block mb-1">
+          <label
+            htmlFor="email"
+            className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
             Email
           </label>
           <input
@@ -140,16 +158,21 @@ const FeedbackForm = ({ onSubmitSuccess }) => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
             placeholder="Enter your email address"
           />
           {errors.email && (
-            <p className="text-red-600 text-sm mt-1">{errors.email}</p>
+            <p className="text-red-600 text-sm mt-1 font-medium">
+              {errors.email}
+            </p>
           )}
         </div>
 
         <div>
-          <label htmlFor="message" className="block mb-1">
+          <label
+            htmlFor="message"
+            className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
             Feedback Message
           </label>
           <textarea
@@ -157,21 +180,49 @@ const FeedbackForm = ({ onSubmitSuccess }) => {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            rows="4"
-            className="w-full p-2 border border-gray-300 rounded"
+            rows="5"
+            className="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
             placeholder="Please share your feedback here..."
           ></textarea>
           {errors.message && (
-            <p className="text-red-600 text-sm mt-1">{errors.message}</p>
+            <p className="text-red-600 text-sm mt-1 font-medium">
+              {errors.message}
+            </p>
           )}
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-blue-500 text-white p-2 rounded"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-md shadow-md transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          {isSubmitting ? "Submitting..." : "Submit Feedback"}
+          {isSubmitting ? (
+            <span className="flex items-center justify-center">
+              <svg
+                className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              Submitting...
+            </span>
+          ) : (
+            "Submit Feedback"
+          )}
         </button>
       </form>
     </div>
