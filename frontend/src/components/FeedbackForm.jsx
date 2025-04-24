@@ -20,10 +20,6 @@ const FeedbackForm = ({ onSubmitSuccess }) => {
 
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
-    } else if (
-      !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)
-    ) {
-      newErrors.email = "Please enter a valid email address";
     }
 
     if (!formData.message.trim()) {
@@ -59,9 +55,12 @@ const FeedbackForm = ({ onSubmitSuccess }) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    const baseUrl =
+      import.meta.env.VITE_API_BASE_URL || "http://localhost:4000";
+
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/submit-feedback",
+        `${baseUrl}/api/submit-feedback`,
         formData
       );
 
